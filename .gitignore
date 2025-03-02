@@ -57,3 +57,8 @@ typings/
 # dotenv environment variables file
 .env
 
+# lock for hogo build
+.hugo_build.lock
+
+# use github action so no need to have this here
+docs/
