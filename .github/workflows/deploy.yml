@@ -1,0 +1,30 @@
+name: Deploy Hugo site to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main  # 监听 main 分支的变更
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: 'latest'
+
+      - name: Build site
+        run: hugo --minify  # Hugo 会自动生成到 docs/ 目录
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs  # 这里改为 docs 目录
+          external_repository: zw4315/zw4315.github.io  # 部署到你的 GitHub Pages 仓库
+          publish_branch: main  # GitHub Pages 默认用 main 分支
