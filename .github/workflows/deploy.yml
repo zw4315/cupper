@@ -3,14 +3,14 @@ name: Deploy Hugo site to GitHub Pages
 on:
   push:
     branches:
-      - main  # 监听 main 分支的变更
+      - master  # 当 `cupper.git` 的 main 分支有更新时触发
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout cupper.git repository
         uses: actions/checkout@v4
 
       - name: Install Hugo
@@ -18,13 +18,13 @@ jobs:
         with:
           hugo-version: 'latest'
 
-      - name: Build site
-        run: hugo --minify  # Hugo 会自动生成到 docs/ 目录
+      - name: Build Hugo site
+        run: hugo --minify  # Hugo 生成静态站点到 `docs/`
 
-      - name: Deploy to GitHub Pages
+      - name: Deploy to GitHub Pages repository
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./docs  # 这里改为 docs 目录
-          external_repository: zw4315/zw4315.github.io  # 部署到你的 GitHub Pages 仓库
-          publish_branch: main  # GitHub Pages 默认用 main 分支
+          publish_dir: ./docs  # 这里是 Hugo 生成的静态网站目录
+          external_repository: zw4315/zw4315.github.io  # 目标 GitHub Pages 仓库
+          publish_branch: master  # 把 `docs/` 里的内容推送到 `zw4315.github.io.git`
