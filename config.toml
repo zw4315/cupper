@@ -1,6 +1,6 @@
 languageCode = "en-us"
 title = "Edward’s Brain Dump"
-baseURL = "http://localhost:1313/cupper/"
+baseURL = "https://zw4315.github.io/"
 canonifyURLs = true
 theme = "cupper"
 publishDir = "docs"
