@@ -24,7 +24,7 @@ jobs:
       - name: Deploy to GitHub Pages repository
         uses: peaceiris/actions-gh-pages@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          personal_token: ${{ secrets.DEPLOY_PAT }}  # 使用个人访问令牌
           publish_dir: ./docs  # 这里是 Hugo 生成的静态网站目录
           external_repository: zw4315/zw4315.github.io  # 目标 GitHub Pages 仓库
           publish_branch: master  # 把 `docs/` 里的内容推送到 `zw4315.github.io.git`
