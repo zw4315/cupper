@@ -6,4 +6,4 @@ theme = "cupper"
 publishDir = "docs"
 
 [params]
-  description = "Edward’s Brain Dump: AI, Code, and Mild Panic"
+  description = "Edward’s Brain Dump: AI, Coding, and Mild Panic"
